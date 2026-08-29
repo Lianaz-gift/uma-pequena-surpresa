@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Uma Pequena Surpresa</title>
+
+<style>
+
+/* =========================
+   BASE
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #29251d 0%,
+            #151515 42%,
+            #080808 100%
+        );
+    color:#fff;
+    overflow:hidden;
+}
+
+/* =========================
+   TELA INICIAL
+========================= */
+
+.intro{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+    padding:30px;
+
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
+}
+
+.intro.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-content{
+    width:100%;
+    max-width:420px;
+}
+
+/* frase */
+
+.intro-phrase{
+    font-size:26px;
+    line-height:1.45;
+    font-weight:normal;
+
+    opacity:0;
+
+    animation:
+        phraseAppear 1.8s ease forwards;
+}
+
+@keyframes phraseAppear{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* pequena linha */
+
+.line{
+    width:35px;
+    height:1px;
+
+    background:#d8b86a;
+
+    margin:28px auto;
+
+    opacity:.7;
+}
+
+/* botão */
+
+.continue{
+    border:1px solid rgba(216,184,106,.7);
+
+    background:transparent;
+
+    color:#d8b86a;
+
+    padding:13px 30px;
+
+    border-radius:30px;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    opacity:0;
+
+    animation:
+        buttonAppear 1s ease 1.2s forwards;
+
+    transition:.3s;
+}
+
+.continue:hover{
+    background:#d8b86a;
+    color:#111;
+}
+
+@keyframes buttonAppear{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+  
+/* =========================
+   TELA DE PERSONALIZAÇÃO
+========================= */
+
+.create-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.create-screen.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+.create-content{
+
+    width:100%;
+
+    max-width:420px;
+}
+
+  
+  /* =========================
+   BOTÃO VOLTAR
+========================= */
+
+.back-button{
+
+    position:absolute;
+
+    top:25px;
+
+    left:22px;
+
+    border:none;
+
+    background:transparent;
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.back-button:hover{
+
+    color:#d8b86a;
+}
+  
+.create-title{
+
+    font-size:26px;
+
+    line-height:1.4;
+
+    margin-bottom:10px;
+}
+
+.create-subtitle{
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    margin-bottom:25px;
+}
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+
+    margin-bottom:18px;
+}
+
+.category-option{
+
+    padding:13px 8px;
+
+    border:1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,.03);
+
+    color:#ccc;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.category-option.selected{
+
+    border-color:#d8b86a;
+
+    color:#d8b86a;
+
+    background:
+        rgba(216,184,106,.08);
+}
+
+.create-input{
+
+    width:100%;
+
+    padding:13px 15px;
+
+    margin-bottom:10px;
+
+    border:1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.03);
+
+    color:#fff;
+
+    outline:none;
+
+    font-family:Arial,sans-serif;
+
+    font-size:12px;
+}
+
+.create-input::placeholder{
+
+    color:#666;
+}
+
+.create-input:focus{
+
+    border-color:
+        rgba(216,184,106,.7);
+}
+
+.create-message{
+
+    height:75px;
+
+    resize:none;
+  }
+
+  /* =========================
+   BOTÃO VOLTAR DA SURPRESA
+========================= */
+
+.gift-back-button{
+
+    position:absolute;
+
+    top:25px;
+
+    left:22px;
+
+    border:none;
+
+    background:transparent;
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.gift-back-button:hover{
+
+    color:#d8b86a;
+  }
+
+/* =========================
+   ÁREA DA CAIXA
+========================= */
+
+.gift-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.gift-screen.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.gift-label{
+
+    color:#d8b86a;
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+    margin-bottom:55px;
+
+    opacity:.9;
+}
+
+/* =========================
+   CAIXA
+========================= */
+
+.gift{
+
+    width:180px;
+
+    height:155px;
+
+    position:relative;
+
+    cursor:pointer;
+
+    animation:
+        floating 3s ease-in-out infinite;
+
+    transition:
+        opacity .6s ease,
+        transform .7s ease;
+}
+
+.gift.hide{
+
+    opacity:0;
+
+    transform:
+        translateY(30px)
+        scale(.8);
+
+    pointer-events:none;
+}
+
+@keyframes floating{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-9px);
+    }
+
+}
+
+/* corpo */
+
+.box{
+
+    position:absolute;
+
+    width:170px;
+
+    height:115px;
+
+    left:5px;
+
+    bottom:0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #a81423,
+            #570811
+        );
+
+    border-radius:5px;
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.6),
+        inset 0 0 18px rgba(255,255,255,.06);
+}
+
+/* fita vertical */
+
+.ribbon{
+
+    position:absolute;
+
+    width:24px;
+
+    height:155px;
+
+    left:78px;
+
+    top:0;
+
+    background:#d8b86a;
+
+    z-index:3;
+}
+
+/* tampa */
+
+.lid{
+
+    position:absolute;
+
+    width:184px;
+
+    height:35px;
+
+    left:-2px;
+
+    top:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #c11728,
+            #720914
+        );
+
+    border-radius:5px;
+
+    z-index:6;
+
+    transition:
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        opacity .7s ease;
+}
+
+.lid:before{
+
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+
+    height:35px;
+
+    left:80px;
+
+    background:#d8b86a;
+}
+
+/* laço */
+
+.bow{
+
+    position:absolute;
+
+    width:50px;
+
+    height:35px;
+
+    left:65px;
+
+    top:-5px;
+
+    z-index:10;
+
+    transition:
+        transform 1s ease,
+        opacity .7s ease;
+}
+
+.bow:before,
+.bow:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:45px;
+
+    height:28px;
+
+    background:#d8b86a;
+
+    border-radius:50%;
+}
+
+.bow:before{
+
+    left:-30px;
+
+    transform:rotate(25deg);
+}
+
+.bow:after{
+
+    left:35px;
+
+    transform:rotate(-25deg);
+}
+
+.knot{
+
+    position:absolute;
+
+    width:17px;
+
+    height:17px;
+
+    background:#d8b86a;
+
+    border-radius:50%;
+
+    left:16px;
+
+    top:8px;
+
+    z-index:11;
+}
+
+/* =========================
+   CAIXA ABERTA
+========================= */
+
+.gift.open{
+
+    animation:none;
+}
+
+.gift.open .lid{
+
+    transform:
+        translateY(-95px)
+        rotate(-7deg);
+}
+
+.gift.open .bow{
+
+    transform:
+        translateY(-95px)
+        rotate(-7deg);
+}
+
+/* =========================
+   TEXTO ABAIXO
+========================= */
+
+.hint{
+
+    margin-top:42px;
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+}
+
+/* =========================
+   PARTÍCULAS
+========================= */
+
+.particle{
+
+    position:fixed;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#d8b86a;
+
+    pointer-events:none;
+
+    animation:
+        particleMove 1.5s ease-out forwards;
+}
+
+@keyframes particleMove{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(var(--x),var(--y))
+            scale(0);
+    }
+
+}
+
+/* =========================
+   CARTÃO
+========================= */
+
+.card{
+
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.8);
+
+    width:88%;
+
+    max-width:390px;
+
+    padding:38px 25px;
+
+    text-align:center;
+
+    background:
+        rgba(20,20,20,.96);
+
+    border:
+        1px solid
+        rgba(216,184,106,.45);
+
+    border-radius:20px;
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,.8);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.card.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+.card-icon{
+
+    font-size:36px;
+
+    margin-bottom:20px;
+}
+
+.phrase{
+
+    font-size:21px;
+
+    line-height:1.6;
+
+    font-style:italic;
+}
+
+.category{
+
+    margin-top:23px;
+
+    color:#d8b86a;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+/* =========================
+   PERSONALIZAÇÃO DO CARTÃO
+========================= */
+
+.recipient{
+
+    margin-bottom:20px;
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+.recipient span{
+
+    color:#d8b86a;
+
+    margin-left:5px;
+
+    letter-spacing:1px;
+}
+
+.personal-message{
+
+    margin-top:22px;
+
+    padding-top:20px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:#ccc;
+
+    font-family:Arial,sans-serif;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+.sender{
+
+    margin-top:20px;
+
+    color:#666;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+  }
+
+/* =========================
+   MENSAGEM DO FORMULÁRIO
+========================= */
+
+.form-message{
+
+    min-height:18px;
+
+    margin-bottom:10px;
+
+    color:#c9a85d;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:.5px;
+
+    opacity:0;
+
+    transition:
+        opacity .3s ease;
+}
+
+.form-message.show{
+
+    opacity:1;
+  }
+  
+/* =========================
+   BOTÃO NOVA SURPRESA
+========================= */
+
+.new-surprise{
+
+    margin-top:30px;
+
+    border:1px solid #d8b86a;
+
+    background:transparent;
+
+    color:#d8b86a;
+
+    padding:12px 24px;
+
+    border-radius:25px;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.new-surprise:hover{
+
+    background:#d8b86a;
+
+    color:#111;
+}
+
+.signature{
+
+    margin-top:23px;
+
+    color:#555;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:380px){
+
+    .intro-phrase{
+        font-size:23px;
+    }
+
+    .phrase{
+        font-size:18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<audio id="boxSound" preload="auto">
+    <source src="click-caixa.mp3" type="audio/mpeg">
+</audio>
+
+  
+<!-- =========================
+     PRIMEIRA TELA
+========================= -->
+
+<section class="intro" id="intro">
+
+    <div class="intro-content">
+
+        <div class="intro-phrase">
+            Algumas palavras chegam
+            exatamente quando precisamos delas.
+        </div>
+
+        <div class="line"></div>
+
+        <button
+            class="continue"
+            onclick="startExperience()">
+
+            CONTINUAR
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     TELA DE PERSONALIZAÇÃO
+========================= -->
+
+<section
+    class="create-screen"
+    id="createScreen">
+
+<button
+    class="back-button"
+    onclick="goBack()">
+
+    ← Início
+
+</button>
+  
+    <div class="create-content">
+
+        <div class="create-title">
+            O que você quer dizer?
+        </div>
+
+        <div class="create-subtitle">
+            Escolha o sentimento desta surpresa.
+        </div>
+
+
+        <div class="category-grid">
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Amor">
+
+                ❤️ Amor
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Carinho">
+
+                🫂 Carinho
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Afeto">
+
+                🤍 Afeto
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Desculpas">
+
+                🥺 Desculpas
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Consolo">
+
+                🌧️ Consolo
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Motivação">
+
+                🔥 Motivação
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Disciplina">
+
+                ⚡ Disciplina
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Gratidão">
+
+                ✨ Gratidão
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Saudade">
+
+                🌙 Saudade
+
+            </div>
+
+
+            <div
+                class="category-option"
+                onclick="selectCategory(this)"
+                data-category="Reflexão">
+
+                💭 Reflexão
+
+            </div>
+
+        </div>
+
+
+        <input
+            type="text"
+            class="create-input"
+            id="receiver"
+            placeholder="Para quem é?">
+
+
+        <input
+            type="text"
+            class="create-input"
+            id="sender"
+            placeholder="De quem?">
+
+
+<textarea
+    class="create-input create-message"
+    id="personalMessage"
+    placeholder="Escreva algo pessoal... (opcional)"></textarea>
+
+
+<div
+    class="form-message"
+    id="formMessage">
+</div>
+      
+        <button
+            class="continue"
+            onclick="createGift()">
+
+            CRIAR PRESENTE
+
+        </button>
+
+    </div>
+
+</section>
+  
+  
+<!-- =========================
+     TELA DA CAIXA
+========================= -->
+
+<section
+    class="gift-screen"
+    id="giftScreen">
+
+<button
+    class="gift-back-button"
+    onclick="backToCreate()">
+
+    ← Voltar
+
+</button>
+  
+<div class="gift-label" id="giftLabel">
+    Uma pequena surpresa para você.
+</div>
+
+
+    <div
+        class="gift"
+        id="gift"
+        onclick="openGift()">
+
+        <div class="bow"></div>
+
+        <div class="knot"></div>
+
+        <div class="lid"></div>
+
+        <div class="box"></div>
+
+        <div class="ribbon"></div>
+
+    </div>
+
+
+    <div class="hint">
+        TOQUE PARA ABRIR
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CARTÃO
+========================= -->
+
+<div
+    class="card"
+    id="card">
+
+<div class="recipient">
+
+    PARA <span id="receiverResult"></span>
+
+</div>
+  
+    <div
+        class="card-icon"
+        id="emoji">
+        ❤️
+    </div>
+
+
+    <div
+        class="phrase"
+        id="phrase">
+    </div>
+
+
+    <div
+        class="category"
+        id="category">
+    </div>
+
+<div
+    class="personal-message"
+    id="personalResult">
+</div>
+
+<div
+    class="sender"
+    id="senderResult">
+</div>
+  
+
+    <button
+        class="new-surprise"
+        onclick="newSurprise()">
+
+        ✦ NOVA SURPRESA
+
+    </button>
+
+
+    <div class="signature">
+
+        Uma pequena mensagem pode
+        mudar um grande dia.
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   FRASES
+========================= */
+
+const phrases = [
+
+{
+text:"Você não precisa ter tudo resolvido hoje. Continue caminhando.",
+category:"Motivação",
+emoji:"🔥"
+},
+
+{
+text:"Algumas coisas bonitas levam tempo para acontecer. Tenha paciência.",
+category:"Reflexão",
+emoji:"🌱"
+},
+
+{
+text:"Disciplina é continuar fazendo mesmo quando a motivação desaparece.",
+category:"Disciplina",
+emoji:"🧠"
+},
+
+{
+text:"Você merece alguém que escolha ficar, mesmo quando seria mais fácil partir.",
+category:"Amor",
+emoji:"❤️"
+},
+
+{
+text:"Cuide de quem você ama. Pequenos gestos também dizem 'eu me importo'.",
+category:"Carinho",
+emoji:"🫂"
+},
+
+{
+text:"Não permita que um dia ruim faça você acreditar que sua vida é ruim.",
+category:"Motivação",
+emoji:"✨"
+},
+
+{
+text:"Às vezes, tudo o que alguém precisa é saber que não está sozinho.",
+category:"Afeto",
+emoji:"🫂"
+},
+
+{
+text:"Você não está atrasado. Está vivendo no seu próprio ritmo.",
+category:"Reflexão",
+emoji:"🌙"
+},
+
+{
+text:"Faça hoje aquilo que o seu eu do futuro agradecerá.",
+category:"Disciplina",
+emoji:"🔥"
+},
+
+{
+text:"Amar também é cuidar, ouvir, compreender e permanecer.",
+category:"Amor",
+emoji:"❤️"
+},
+
+{
+text:"Nem todo silêncio significa distância. Às vezes significa apenas sentimento.",
+category:"Sentimentos",
+emoji:"💭"
+},
+
+{
+text:"Você já sobreviveu a dias que achou que não conseguiria superar.",
+category:"Motivação",
+emoji:"💪"
+},
+
+{
+text:"Existe beleza nas pessoas que fazem o bem sem precisar de aplausos.",
+category:"Reflexão",
+emoji:"✨"
+},
+
+{
+text:"Não desista só porque ainda não aconteceu.",
+category:"Disciplina",
+emoji:"🔥"
+},
+
+{
+text:"Às vezes, carinho é simplesmente perguntar: 'Você está bem?' e realmente querer saber.",
+category:"Carinho",
+emoji:"🫶"
+},
+
+{
+text:"O coração também precisa de descanso.",
+category:"Sentimentos",
+emoji:"❤️"
+},
+
+{
+text:"Seja gentil. Você nunca sabe qual batalha alguém está enfrentando.",
+category:"Afeto",
+emoji:"🌷"
+},
+
+{
+text:"Grandes mudanças começam com pequenas decisões repetidas todos os dias.",
+category:"Disciplina",
+emoji:"🧠"
+},
+
+{
+text:"Você é mais forte do que a versão de você que começou essa jornada.",
+category:"Motivação",
+emoji:"🔥"
+},
+
+{
+text:"Algumas pessoas entram na nossa vida e deixam luz mesmo depois de partir.",
+category:"Sentimentos",
+emoji:"🌙"
+},
+
+{
+text:"Talvez você não perceba, mas a sua presença pode significar muito para alguém.",
+category:"Afeto",
+emoji:"🤍"
+},
+
+{
+text:"Continue. Mesmo devagar, continuar ainda é avançar.",
+category:"Motivação",
+emoji:"🌱"
+},
+
+{
+text:"Quem realmente se importa demonstra, mesmo nas pequenas coisas.",
+category:"Carinho",
+emoji:"🫶"
+},
+
+{
+text:"Não procure perfeição. Procure evolução.",
+category:"Disciplina",
+emoji:"🔥"
+},
+
+{
+text:"Alguns sentimentos não precisam de palavras para serem verdadeiros.",
+category:"Sentimentos",
+emoji:"💭"
+},
+
+{
+text:"Desculpar-se não apaga o que aconteceu, mas pode ser o primeiro passo para consertar.",
+category:"Desculpas",
+emoji:"🥺"
+},
+
+{
+text:"Eu errei. Não quero justificar o que fiz, apenas reconhecer e pedir perdão.",
+category:"Desculpas",
+emoji:"🤍"
+},
+
+{
+text:"Às vezes, dizer 'me desculpa' é difícil. Mas reconhecer o erro é uma forma de respeito.",
+category:"Desculpas",
+emoji:"🌷"
+},
+
+{
+text:"Você não precisa enfrentar tudo sozinho. Permita-se respirar e descansar.",
+category:"Consolo",
+emoji:"🌧️"
+},
+
+{
+text:"Nem toda dor precisa de uma solução imediata. Às vezes, precisamos apenas de alguém por perto.",
+category:"Consolo",
+emoji:"🫂"
+},
+
+{
+text:"Dias difíceis passam. Por enquanto, apenas dê um passo de cada vez.",
+category:"Consolo",
+emoji:"🌙"
+},
+
+{
+text:"Obrigado por fazer parte da minha vida, mesmo nas pequenas coisas.",
+category:"Gratidão",
+emoji:"✨"
+},
+
+{
+text:"Algumas pessoas merecem ser lembradas simplesmente porque tornam nossos dias melhores.",
+category:"Gratidão",
+emoji:"🤍"
+},
+
+{
+text:"Obrigado por estar presente quando eu mais precisei.",
+category:"Gratidão",
+emoji:"🫶"
+},
+
+{
+text:"A saudade é uma forma silenciosa de lembrar o quanto alguém significa para nós.",
+category:"Saudade",
+emoji:"🌙"
+},
+
+{
+text:"Mesmo longe, algumas pessoas continuam ocupando um lugar especial dentro de nós.",
+category:"Saudade",
+emoji:"🤍"
+},
+
+{
+text:"Há pessoas que fazem falta até nos momentos mais simples.",
+category:"Saudade",
+emoji:"💭"
+}
+];
+
+
+let lastIndex = -1;
+  
+let selectedCategory = "";
+
+let receiver = "";
+
+let sender = "";
+
+let personalMessage = "";
+
+const boxSound =
+    document.getElementById("boxSound");
+
+  
+  /* =========================
+   ESCOLHER CATEGORIA
+========================= */
+
+function selectCategory(element){
+
+    document
+        .querySelectorAll(".category-option")
+        .forEach(function(item){
+
+            item.classList.remove("selected");
+
+        });
+
+
+    element.classList.add("selected");
+
+
+    selectedCategory =
+        element.dataset.category;
+
+  const messageInput =
+    document.getElementById("personalMessage");
+
+const prompts = {
+
+    "Amor":
+        "Escreva algo que gostaria de dizer a essa pessoa...",
+
+    "Carinho":
+        "Deixe uma mensagem carinhosa...",
+
+    "Afeto":
+        "Escreva algumas palavras de afeto...",
+
+    "Desculpas":
+        "O que você gostaria de pedir desculpas?",
+
+    "Consolo":
+        "Escreva algo para confortar essa pessoa...",
+
+    "Motivação":
+        "Deixe algumas palavras para motivar essa pessoa...",
+
+    "Disciplina":
+        "Escreva algo para lembrar essa pessoa de continuar...",
+
+    "Gratidão":
+        "O que você gostaria de agradecer?",
+
+    "Saudade":
+        "Escreva algo que gostaria de dizer a essa pessoa...",
+
+    "Reflexão":
+        "Deixe uma reflexão para essa pessoa..."
+};
+
+messageInput.placeholder =
+    prompts[selectedCategory];
+  
+}
+
+  
+/* =========================
+   COMEÇAR
+========================= */
+
+function startExperience(){
+
+    document
+        .getElementById("intro")
+        .classList.add("hide");
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("createScreen")
+            .classList.add("active");
+
+    },700);
+
+}
+
+
+  /* =========================
+   VOLTAR
+========================= */
+
+function goBack(){
+
+    document
+        .getElementById("createScreen")
+        .classList.remove("active");
+
+    document
+        .getElementById("intro")
+        .classList.remove("hide");
+
+}
+  
+
+  /* =========================
+   CRIAR PRESENTE
+========================= */
+
+function createGift(){
+
+    receiver =
+        document
+            .getElementById("receiver")
+            .value
+            .trim();
+
+document
+    .getElementById("giftLabel")
+    .textContent =
+    "Uma pequena surpresa para " + receiver + ".";
+  
+
+    sender =
+        document
+            .getElementById("sender")
+            .value
+            .trim();
+
+
+    personalMessage =
+        document
+            .getElementById("personalMessage")
+            .value
+            .trim();
+
+
+if(!selectedCategory){
+
+    showFormMessage(
+        "Escolha um sentimento para continuar."
+    );
+
+    return;
+
+}
+
+  
+if(!receiver){
+
+    showFormMessage(
+        "Digite o nome de quem vai receber."
+    );
+
+    return;
+  
+}
+
+
+if(!sender){
+
+    showFormMessage(
+        "Digite o nome de quem está enviando."
+    );
+
+    return;
+  
+}
+
+
+    document
+        .getElementById("createScreen")
+        .classList.remove("active");
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("giftScreen")
+            .classList.add("active");
+
+    },700);
+
+               }
+
+
+  /* =========================
+   MENSAGEM DO FORMULÁRIO
+========================= */
+
+function showFormMessage(text){
+
+    const message =
+        document.getElementById("formMessage");
+
+    message.textContent = text;
+
+    message.classList.add("show");
+
+    setTimeout(()=>{
+
+        message.classList.remove("show");
+
+    },3000);
+
+}
+
+  
+/* =========================
+   ABRIR CAIXA
+========================= */
+
+function openGift(){
+
+    const gift =
+        document.getElementById("gift");
+
+
+    if(
+        gift.classList.contains("open")
+    ){
+        return;
+    }
+
+
+boxSound.currentTime = 0;
+boxSound.play();
+  
+    gift.classList.add("open");
+
+
+    createParticles();
+
+
+    setTimeout(()=>{
+
+        gift.classList.add("hide");
+
+    },900);
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("giftScreen")
+            .classList.remove("active");
+
+
+        document
+            .getElementById("card")
+            .classList.add("show");
+
+
+        showPhrase();
+
+    },1200);
+
+}
+
+
+/* =========================
+   PARTÍCULAS
+========================= */
+
+function createParticles(){
+
+    for(
+        let i=0;
+        i<40;
+        i++
+    ){
+
+        const particle =
+            document.createElement("div");
+
+
+        particle.className =
+            "particle";
+
+
+        particle.style.left =
+            "50%";
+
+
+        particle.style.top =
+            "50%";
+
+
+        particle.style.setProperty(
+            "--x",
+            (Math.random()*320-160)+"px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (Math.random()*320-160)+"px"
+        );
+
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        setTimeout(()=>{
+
+            particle.remove();
+
+        },1500);
+
+    }
+
+}
+
+
+/* =========================
+   MOSTRAR FRASE
+========================= */
+
+function showPhrase(){
+
+    let available = phrases;
+
+
+    /* Se uma categoria foi escolhida,
+       procurar apenas frases dessa categoria */
+
+    if(selectedCategory){
+
+        const filtered =
+            phrases.filter(function(item){
+
+                return item.category ===
+                    selectedCategory;
+
+            });
+
+      
+if(filtered.length > 0){
+
+    available = filtered;
+
+}
+else{
+
+    return;
+
+      }
+      
+    }
+
+
+    let index;
+
+
+    let item;
+
+
+    do{
+
+        index =
+            Math.floor(
+                Math.random() *
+                available.length
+            );
+
+
+        item =
+            available[index];
+
+    }
+
+    while(
+        available.length > 1 &&
+        index === lastIndex
+    );
+
+
+    lastIndex = index;
+
+
+    document
+        .getElementById("phrase")
+        .textContent =
+        '"' + item.text + '"';
+
+
+    document
+        .getElementById("category")
+        .textContent =
+        item.category;
+
+
+    document
+        .getElementById("emoji")
+        .textContent =
+        item.emoji;
+
+  document
+    .getElementById("receiverResult")
+    .textContent =
+    receiver;
+
+
+document
+    .getElementById("senderResult")
+    .textContent =
+    "De: " + sender;
+
+
+const personal =
+    document.getElementById("personalResult");
+
+
+if(personalMessage){
+
+    personal.textContent =
+        personalMessage;
+
+    personal.style.display =
+        "block";
+
+}
+else{
+
+    personal.textContent =
+        "";
+
+    personal.style.display =
+        "none";
+
+}
+  
+}
+
+
+/* =========================
+   NOVA SURPRESA
+========================= */
+
+function newSurprise(){
+
+    const card =
+        document.getElementById("card");
+
+    const gift =
+        document.getElementById("gift");
+
+    const giftScreen =
+        document.getElementById("giftScreen");
+
+
+    /* Fechar o cartão */
+
+    card.classList.remove("show");
+
+
+    /* Reiniciar a caixa */
+
+    gift.classList.remove("open");
+
+    gift.classList.remove("hide");
+
+
+    /* Mostrar novamente a caixa */
+
+    setTimeout(()=>{
+
+        giftScreen.classList.add("active");
+
+    },700);
+
+}
+
+  /* =========================
+   VOLTAR PARA PERSONALIZAÇÃO
+========================= */
+
+function backToCreate(){
+
+    document
+        .getElementById("giftScreen")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("card")
+        .classList.remove("show");
+
+
+    document
+        .getElementById("createScreen")
+        .classList.add("active");
+
+}
+
+</script>
+
+</body>
+</html>
