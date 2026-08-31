@@ -2511,7 +2511,7 @@ function newSurprise(){
    VOLTAR PARA O LINK
 ========================= */
 
-function backToCreate(){
+  function backToCreate(){
 
     document
         .getElementById("giftScreen")
@@ -2523,11 +2523,22 @@ function backToCreate(){
         .classList.remove("show");
 
 
+    if(receivedGift){
+
+        document
+            .getElementById("intro")
+            .classList.remove("hide");
+
+        return;
+
+    }
+
+
     document
         .getElementById("readyScreen")
         .classList.add("active");
 
-    }
+         }
 
 loadGiftFromLink();
   
