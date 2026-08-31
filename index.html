@@ -1319,6 +1319,7 @@ body{
 
 <button
     class="gift-back-button"
+    id="giftBackButton"
     onclick="backToCreate()">
 
     ← Voltar
@@ -1966,7 +1967,17 @@ const urlEmoji =
 
   
 receivedGift = true;
+
+document
+    .getElementById("giftLabel")
+    .textContent =
+    "Uma pequena surpresa para " + urlReceiver + ".";
   
+document
+    .getElementById("giftBackButton")
+    .textContent =
+    "✦ CRIAR MINHA PRÓPRIA SURPRESA";
+      
     receiver = urlReceiver;
 
     sender = urlSender || "";
@@ -2511,7 +2522,7 @@ function newSurprise(){
    VOLTAR PARA O LINK
 ========================= */
 
-  function backToCreate(){
+function backToCreate(){
 
     document
         .getElementById("giftScreen")
@@ -2525,9 +2536,46 @@ function newSurprise(){
 
     if(receivedGift){
 
+        receivedGift = false;
+
+        selectedPhrase = null;
+        selectedCategory = "";
+        receiver = "";
+        sender = "";
+        personalMessage = "";
+        giftLink = "";
+
+
         document
-            .getElementById("intro")
-            .classList.remove("hide");
+            .getElementById("receiver")
+            .value = "";
+
+        document
+            .getElementById("sender")
+            .value = "";
+
+        document
+            .getElementById("personalMessage")
+            .value = "";
+
+
+        document
+            .getElementById("giftBackButton")
+            .textContent =
+            "← Voltar";
+
+
+        history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+
+
+        document
+            .getElementById("createScreen")
+            .classList.add("active");
+
 
         return;
 
@@ -2538,7 +2586,7 @@ function newSurprise(){
         .getElementById("readyScreen")
         .classList.add("active");
 
-         }
+  }
 
 loadGiftFromLink();
   
