@@ -709,6 +709,161 @@ body{
 
 }
 
+  
+/* =========================
+   PRESENTE PRONTO
+========================= */
+
+.ready-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #29251d 0%,
+            #151515 42%,
+            #080808 100%
+        );
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.ready-screen.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+}
+
+.ready-content{
+
+    width:100%;
+
+    max-width:390px;
+}
+
+.ready-icon{
+
+    color:#d8b86a;
+
+    font-size:30px;
+
+    margin-bottom:20px;
+}
+
+.ready-title{
+
+    font-size:26px;
+
+    line-height:1.4;
+
+    margin-bottom:12px;
+}
+
+.ready-subtitle{
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+}
+
+.ready-button{
+
+    width:100%;
+
+    border:1px solid #d8b86a;
+
+    background:#d8b86a;
+
+    color:#111;
+
+    padding:13px 20px;
+
+    border-radius:25px;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    margin-bottom:10px;
+
+    transition:.3s;
+}
+
+.ready-button:hover{
+
+    background:transparent;
+
+    color:#d8b86a;
+}
+
+.ready-whatsapp{
+
+    width:100%;
+
+    border:1px solid
+        rgba(255,255,255,.15);
+
+    background:transparent;
+
+    color:#aaa;
+
+    padding:13px 20px;
+
+    border-radius:25px;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:1.5px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.ready-whatsapp:hover{
+
+    border-color:#d8b86a;
+
+    color:#d8b86a;
+      }
+
+  
 /* =========================
    CARTÃO
 ========================= */
@@ -1201,6 +1356,66 @@ body{
 
 
 <!-- =========================
+     PRESENTE PRONTO
+========================= -->
+
+<section
+    class="ready-screen"
+    id="readyScreen">
+
+    <div class="ready-content">
+
+        <div class="ready-icon">
+            ✦
+        </div>
+
+        <div class="ready-title">
+            Seu presente está pronto
+        </div>
+
+        <div class="ready-subtitle">
+            A surpresa está esperando
+            por alguém especial.
+        </div>
+
+<button
+    class="ready-button"
+    onclick="previewGift()">
+
+    🎁 VER SURPRESA
+
+</button>
+      
+        <button
+            class="ready-button"
+            onclick="copyGiftLink()">
+
+            🔗 COPIAR LINK
+
+        </button>
+
+<button
+    class="ready-button"
+    onclick="editGift()">
+
+    ✏️ EDITAR PRESENTE
+
+</button>
+      
+        <button
+            class="ready-whatsapp"
+            onclick="shareWhatsApp()">
+
+            💬 COMPARTILHAR NO WHATSAPP
+
+        </button>
+
+    </div>
+
+</section>
+  
+  
+<!-- =========================
      CARTÃO
 ========================= -->
 
@@ -1505,6 +1720,12 @@ let sender = "";
 
 let personalMessage = "";
 
+let giftLink = "";
+
+let selectedPhrase = null;
+
+let receivedGift = false;
+  
 const boxSound =
     document.getElementById("boxSound");
 
@@ -1583,6 +1804,41 @@ function startExperience(){
         .classList.add("hide");
 
 
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const hasGift =
+        params.has("receiver");
+
+
+    if(hasGift){
+
+        receivedGift = true;
+
+
+        document
+            .getElementById("createScreen")
+            .classList.remove("active");
+
+
+        document
+            .getElementById("readyScreen")
+            .classList.remove("active");
+
+
+        document
+            .getElementById("giftScreen")
+            .classList.add("active");
+
+
+        return;
+
+    }
+
+
     setTimeout(()=>{
 
         document
@@ -1591,7 +1847,7 @@ function startExperience(){
 
     },700);
 
-}
+          }
 
 
   /* =========================
@@ -1609,13 +1865,199 @@ function goBack(){
         .classList.remove("hide");
 
 }
+
+
+function previewGift(){
+
+    document
+        .getElementById("readyScreen")
+        .classList.remove("active");
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("giftScreen")
+            .classList.add("active");
+
+    },700);
+
+}
   
 
+function editGift(){
+
+    document
+        .getElementById("readyScreen")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("createScreen")
+        .classList.add("active");
+
+      }
+
+
+function copyGiftLink(){
+
+    if(!giftLink){
+
+        alert(
+            "O link do presente ainda não foi criado."
+        );
+
+        return;
+
+    }
+
+    navigator.clipboard
+        .writeText(giftLink)
+        .then(()=>{
+
+            alert(
+                "Link copiado! 🔗"
+            );
+
+        })
+        .catch(()=>{
+
+            alert(
+                "Não foi possível copiar o link."
+            );
+
+        });
+
+      }
+  
+  
+function loadGiftFromLink(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const urlReceiver =
+        params.get("receiver");
+
+    const urlSender =
+        params.get("sender");
+
+    const urlCategory =
+        params.get("category");
+
+    const urlMessage =
+        params.get("message");
+
+const urlPhrase =
+    params.get("phrase");
+
+const urlEmoji =
+    params.get("emoji");
+  
+  
+    if(!urlReceiver){
+
+        return;
+
+    }
+
+  
+receivedGift = true;
+  
+    receiver = urlReceiver;
+
+    sender = urlSender || "";
+
+    selectedCategory =
+        urlCategory || "";
+
+    personalMessage =
+        urlMessage || "";
+
+
+    document
+        .getElementById("receiverResult")
+        .textContent =
+        receiver;
+
+
+    document
+        .getElementById("senderResult")
+        .textContent =
+        sender;
+
+
+    document
+        .getElementById("personalResult")
+        .textContent =
+        personalMessage;
+
+
+if(urlPhrase){
+
+    selectedPhrase = {
+        text: urlPhrase,
+        emoji: urlEmoji || "",
+        category: selectedCategory
+    };
+
+      }
+
+
+    if(selectedPhrase){
+
+        document
+            .getElementById("phrase")
+            .textContent =
+            selectedPhrase.text;
+
+        document
+            .getElementById("category")
+            .textContent =
+            selectedPhrase.category;
+
+        document
+            .getElementById("emoji")
+            .textContent =
+            selectedPhrase.emoji;
+
+    }
+
+
+    document
+        .getElementById("intro")
+        .classList.add("hide");
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("createScreen")
+            .classList.remove("active");
+
+
+        document
+            .getElementById("readyScreen")
+            .classList.remove("active");
+
+
+        document
+            .getElementById("giftScreen")
+            .classList.add("active");
+
+    },700);
+
+  }
+
+  
   /* =========================
    CRIAR PRESENTE
 ========================= */
 
-function createGift(){
+  function createGift(){
 
     receiver =
         document
@@ -1676,20 +2118,61 @@ if(!sender){
 }
 
 
+const filteredPhrases =
+    phrases.filter(function(item){
+
+        return item.category ===
+            selectedCategory;
+
+    });
+
+
+if(filteredPhrases.length > 0){
+
+    selectedPhrase =
+        filteredPhrases[
+            Math.floor(
+                Math.random() *
+                filteredPhrases.length
+            )
+        ];
+
+  }
+
+
+const baseUrl =
+    "https://lianaz-gift.github.io/uma-pequena-surpresa/";
+
+giftLink =
+    baseUrl +
+    "?receiver=" +
+    encodeURIComponent(receiver) +
+    "&sender=" +
+    encodeURIComponent(sender) +
+    "&category=" +
+    encodeURIComponent(selectedCategory) +
+    "&message=" +
+    encodeURIComponent(personalMessage) +
+    "&phrase=" +
+    encodeURIComponent(selectedPhrase.text) +
+    "&emoji=" +
+    encodeURIComponent(selectedPhrase.emoji);
+  
+  
+document
+    .getElementById("createScreen")
+    .classList.remove("active");
+
+
+setTimeout(()=>{
+
     document
-        .getElementById("createScreen")
-        .classList.remove("active");
+        .getElementById("readyScreen")
+        .classList.add("active");
 
+},700);
 
-    setTimeout(()=>{
-
-        document
-            .getElementById("giftScreen")
-            .classList.add("active");
-
-    },700);
-
-               }
+}
 
 
   /* =========================
@@ -1828,6 +2311,49 @@ function createParticles(){
 
 function showPhrase(){
 
+    if(selectedPhrase){
+
+        document
+            .getElementById("phrase")
+            .textContent =
+            '"' + selectedPhrase.text + '"';
+
+        document
+            .getElementById("category")
+            .textContent =
+            selectedPhrase.category;
+
+        document
+            .getElementById("emoji")
+            .textContent =
+            selectedPhrase.emoji;
+
+        document
+            .getElementById("receiverResult")
+            .textContent =
+            receiver;
+
+        document
+            .getElementById("senderResult")
+            .textContent =
+            "De: " + sender;
+
+        const personal =
+            document
+                .getElementById("personalResult");
+
+        personal.textContent =
+            personalMessage;
+
+        personal.classList.toggle(
+            "show",
+            personalMessage.trim() !== ""
+        );
+
+        return;
+
+    }
+  
     let available = phrases;
 
 
@@ -1982,7 +2508,7 @@ function newSurprise(){
 }
 
   /* =========================
-   VOLTAR PARA PERSONALIZAÇÃO
+   VOLTAR PARA O LINK
 ========================= */
 
 function backToCreate(){
@@ -1998,11 +2524,13 @@ function backToCreate(){
 
 
     document
-        .getElementById("createScreen")
+        .getElementById("readyScreen")
         .classList.add("active");
 
-}
+    }
 
+loadGiftFromLink();
+  
 </script>
 
 </body>
