@@ -2528,7 +2528,6 @@ function backToCreate(){
         .getElementById("giftScreen")
         .classList.remove("active");
 
-
     document
         .getElementById("card")
         .classList.remove("show");
@@ -2536,15 +2535,24 @@ function backToCreate(){
 
     if(receivedGift){
 
+        /* =========================
+           SAIR DO MODO RECEPTOR
+        ========================= */
+
         receivedGift = false;
 
-        selectedPhrase = null;
-        selectedCategory = "";
         receiver = "";
         sender = "";
         personalMessage = "";
-        giftLink = "";
 
+        selectedCategory = "";
+        selectedPhrase = null;
+
+        giftLink = "";
+        lastIndex = -1;
+
+
+        /* Limpar campos */
 
         document
             .getElementById("receiver")
@@ -2559,11 +2567,50 @@ function backToCreate(){
             .value = "";
 
 
+        /* Remover categoria selecionada */
+
+        document
+            .querySelectorAll(".category-option")
+            .forEach(function(item){
+
+                item.classList.remove("selected");
+
+            });
+
+
+        /* Limpar mensagem de erro */
+
+        document
+            .getElementById("formMessage")
+            .classList.remove("show");
+
+
+        /* Resetar caixa */
+
+        const gift =
+            document.getElementById("gift");
+
+        gift.classList.remove("open");
+        gift.classList.remove("hide");
+
+
+        /* Resetar título da caixa */
+
+        document
+            .getElementById("giftLabel")
+            .textContent =
+            "Uma pequena surpresa para você.";
+
+
+        /* Restaurar botão */
+
         document
             .getElementById("giftBackButton")
             .textContent =
             "← Voltar";
 
+
+        /* Remover os dados do link da URL */
 
         history.replaceState(
             {},
@@ -2571,6 +2618,8 @@ function backToCreate(){
             window.location.pathname
         );
 
+
+        /* Abrir criação limpa */
 
         document
             .getElementById("createScreen")
@@ -2582,11 +2631,17 @@ function backToCreate(){
     }
 
 
+    /* =========================
+       FLUXO DO CRIADOR
+    ========================= */
+
     document
         .getElementById("readyScreen")
         .classList.add("active");
 
   }
+
+
 
 loadGiftFromLink();
   
