@@ -1930,6 +1930,36 @@ function copyGiftLink(){
         });
 
       }
+
+
+function shareWhatsApp(){
+
+    if(!giftLink){
+
+        alert(
+            "O link do presente ainda não foi criado."
+        );
+
+        return;
+    }
+
+
+    const text =
+        "Recebi uma pequena surpresa para te enviar. 🎁\n\n" +
+        giftLink;
+
+
+    const whatsappURL =
+        "https://wa.me/?text=" +
+        encodeURIComponent(text);
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+      }
   
   
 function loadGiftFromLink(){
