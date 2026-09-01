@@ -1487,230 +1487,532 @@ body{
 
 const phrases = [
 
+/* =========================================================
+   DISCIPLINA
+========================================================= */
+
 {
-text:"Você não precisa ter tudo resolvido hoje. Continue caminhando.",
-category:"Motivação",
-emoji:"🔥"
+    id: "DIS-001",
+    text: "Disciplina é continuar quando a vontade já deixou de ser uma boa desculpa.",
+    category: "Disciplina",
+    emoji: "🧠",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Algumas coisas bonitas levam tempo para acontecer. Tenha paciência.",
-category:"Reflexão",
-emoji:"🌱"
+    id: "DIS-002",
+    text: "Levanto-me para cumprir o trabalho próprio do ser humano.",
+    category: "Disciplina",
+    emoji: "🔥",
+    author: "Marcus Aurelius",
+    work: "Meditações",
+    type: "classic",
+    source: "Livro V, 1",
+    verified: true
 },
 
 {
-text:"Disciplina é continuar fazendo mesmo quando a motivação desaparece.",
-category:"Disciplina",
-emoji:"🧠"
+    id: "DIS-003",
+    text: "O que repetes quando ninguém está a olhar acaba por decidir quem te tornas.",
+    category: "Disciplina",
+    emoji: "🧠",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Você merece alguém que escolha ficar, mesmo quando seria mais fácil partir.",
-category:"Amor",
-emoji:"❤️"
+    id: "DIS-004",
+    text: "Há coisas que estão sob o nosso controle e coisas que não estão.",
+    category: "Disciplina",
+    emoji: "🎯",
+    author: "Epicteto",
+    work: "Enchiridion",
+    type: "classic",
+    source: "Capítulo 1",
+    verified: true
 },
 
 {
-text:"Cuide de quem você ama. Pequenos gestos também dizem 'eu me importo'.",
-category:"Carinho",
-emoji:"🫂"
+    id: "DIS-005",
+    text: "Não precisas sentir vontade. Precisas decidir.",
+    category: "Disciplina",
+    emoji: "🔥",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Não permita que um dia ruim faça você acreditar que sua vida é ruim.",
-category:"Motivação",
-emoji:"✨"
+    id: "DIS-006",
+    text: "O essencial é que haja uma longa obediência na mesma direção.",
+    category: "Disciplina",
+    emoji: "🧭",
+    author: "Friedrich Nietzsche",
+    work: "Além do Bem e do Mal",
+    type: "classic",
+    source: "§188",
+    verified: true
 },
 
 {
-text:"Às vezes, tudo o que alguém precisa é saber que não está sozinho.",
-category:"Afeto",
-emoji:"🫂"
+    id: "DIS-007",
+    text: "Um dia difícil não desfaz aquilo que construíste em muitos dias silenciosos.",
+    category: "Disciplina",
+    emoji: "🌱",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Você não está atrasado. Está vivendo no seu próprio ritmo.",
-category:"Reflexão",
-emoji:"🌙"
+    id: "DIS-008",
+    text: "Exercita aquilo que está sob o teu controle.",
+    category: "Disciplina",
+    emoji: "🎯",
+    author: "Epicteto",
+    work: "Enchiridion",
+    type: "classic",
+    source: "Capítulo 1",
+    verified: true
 },
 
 {
-text:"Faça hoje aquilo que o seu eu do futuro agradecerá.",
-category:"Disciplina",
-emoji:"🔥"
+    id: "DIS-009",
+    text: "A constância parece pequena enquanto acontece. Só depois percebemos o que ela construiu.",
+    category: "Disciplina",
+    emoji: "🌱",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Amar também é cuidar, ouvir, compreender e permanecer.",
-category:"Amor",
-emoji:"❤️"
+    id: "DIS-010",
+    text: "Em cada momento, concentra-te em fazer o que tens diante de ti com precisão, dignidade e justiça.",
+    category: "Disciplina",
+    emoji: "🧠",
+    author: "Marcus Aurelius",
+    work: "Meditações",
+    type: "classic",
+    source: "Passagem a verificar na edição definitiva",
+    verified: false
 },
 
 {
-text:"Nem todo silêncio significa distância. Às vezes significa apenas sentimento.",
-category:"Sentimentos",
-emoji:"💭"
+    id: "DIS-011",
+    text: "Não negocies contigo todas as manhãs aquilo que já decidiste na noite anterior.",
+    category: "Disciplina",
+    emoji: "🔥",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Você já sobreviveu a dias que achou que não conseguiria superar.",
-category:"Motivação",
-emoji:"💪"
+    id: "DIS-012",
+    text: "Nenhuma arte se aprende sem exercício.",
+    category: "Disciplina",
+    emoji: "⚒️",
+    author: "Epicteto",
+    work: "Discursos",
+    type: "classic",
+    source: "Passagem a verificar na edição definitiva",
+    verified: false
 },
 
 {
-text:"Existe beleza nas pessoas que fazem o bem sem precisar de aplausos.",
-category:"Reflexão",
-emoji:"✨"
+    id: "DIS-013",
+    text: "O teu futuro não precisa de uma versão perfeita de ti. Precisa de uma versão que continue.",
+    category: "Disciplina",
+    emoji: "🌱",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Não desista só porque ainda não aconteceu.",
-category:"Disciplina",
-emoji:"🔥"
+    id: "DIS-014",
+    text: "A disciplina pode transformar uma força dispersa numa força capaz de criar.",
+    category: "Disciplina",
+    emoji: "⚡",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: "Inspirada em temas de Nietzsche",
+    verified: true
 },
 
 {
-text:"Às vezes, carinho é simplesmente perguntar: 'Você está bem?' e realmente querer saber.",
-category:"Carinho",
-emoji:"🫶"
+    id: "DIS-015",
+    text: "Talvez ninguém esteja a ver. Continua mesmo assim.",
+    category: "Disciplina",
+    emoji: "🔥",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
+},
+
+
+/* =========================================================
+   REFLEXÃO
+========================================================= */
+
+{
+    id: "REF-001",
+    text: "Às vezes, o que procuramos fora é apenas uma resposta que ainda não aprendemos a ouvir dentro.",
+    category: "Reflexão",
+    emoji: "💭",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"O coração também precisa de descanso.",
-category:"Sentimentos",
-emoji:"❤️"
+    id: "REF-002",
+    text: "Talvez amadurecer seja perceber que nem toda pergunta precisa de uma resposta imediata.",
+    category: "Reflexão",
+    emoji: "🌙",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Seja gentil. Você nunca sabe qual batalha alguém está enfrentando.",
-category:"Afeto",
-emoji:"🌷"
+    id: "REF-003",
+    text: "A tua vida é aquilo que os teus pensamentos fazem dela.",
+    category: "Reflexão",
+    emoji: "🪞",
+    author: "Marcus Aurelius",
+    work: "Meditações",
+    type: "classic",
+    source: "Passagem a verificar na edição definitiva",
+    verified: false
 },
 
 {
-text:"Grandes mudanças começam com pequenas decisões repetidas todos os dias.",
-category:"Disciplina",
-emoji:"🧠"
+    id: "REF-004",
+    text: "Há coisas que só entendemos depois de deixarmos de tentar entendê-las à força.",
+    category: "Reflexão",
+    emoji: "🌙",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Você é mais forte do que a versão de você que começou essa jornada.",
-category:"Motivação",
-emoji:"🔥"
+    id: "REF-005",
+    text: "Quem és quando ninguém precisa de nada de ti?",
+    category: "Reflexão",
+    emoji: "🪞",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Algumas pessoas entram na nossa vida e deixam luz mesmo depois de partir.",
-category:"Sentimentos",
-emoji:"🌙"
+    id: "REF-006",
+    text: "Acima de tudo, sê verdadeiro contigo mesmo.",
+    category: "Reflexão",
+    emoji: "🪞",
+    author: "William Shakespeare",
+    work: "Hamlet",
+    type: "classic",
+    source: "Ato I, Cena III",
+    verified: true
 },
 
 {
-text:"Talvez você não perceba, mas a sua presença pode significar muito para alguém.",
-category:"Afeto",
-emoji:"🤍"
+    id: "REF-007",
+    text: "Talvez algumas respostas cheguem tarde porque precisámos primeiro de nos tornar capazes de compreendê-las.",
+    category: "Reflexão",
+    emoji: "⌛",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Continue. Mesmo devagar, continuar ainda é avançar.",
-category:"Motivação",
-emoji:"🌱"
+    id: "REF-008",
+    text: "Nem tudo o que perdeste precisava permanecer. Nem tudo o que permanece precisa ficar.",
+    category: "Reflexão",
+    emoji: "🍂",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Quem realmente se importa demonstra, mesmo nas pequenas coisas.",
-category:"Carinho",
-emoji:"🫶"
+    id: "REF-009",
+    text: "Há dias em que crescer parece apenas aprender a fazer novas perguntas.",
+    category: "Reflexão",
+    emoji: "💭",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Não procure perfeição. Procure evolução.",
-category:"Disciplina",
-emoji:"🔥"
+    id: "REF-010",
+    text: "O tempo não muda apenas as coisas. Às vezes muda a pessoa que as observa.",
+    category: "Reflexão",
+    emoji: "⌛",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Alguns sentimentos não precisam de palavras para serem verdadeiros.",
-category:"Sentimentos",
-emoji:"💭"
+    id: "REF-011",
+    text: "Talvez a pergunta mais difícil não seja 'o que quero?', mas 'por que quero isso?'",
+    category: "Reflexão",
+    emoji: "🪞",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
+},
+
+
+/* =========================================================
+   CONSOLO
+========================================================= */
+
+{
+    id: "CON-001",
+    text: "Não precisas estar bem hoje. Só não precisas atravessar hoje sozinho.",
+    category: "Consolo",
+    emoji: "🤍",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Desculpar-se não apaga o que aconteceu, mas pode ser o primeiro passo para consertar.",
-category:"Desculpas",
-emoji:"🥺"
+    id: "CON-002",
+    text: "Há dores que não precisam de conselho. Precisam apenas de um pouco de tempo e de alguém que permaneça.",
+    category: "Consolo",
+    emoji: "🫂",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Eu errei. Não quero justificar o que fiz, apenas reconhecer e pedir perdão.",
-category:"Desculpas",
-emoji:"🤍"
+    id: "CON-003",
+    text: "Sê como o promontório contra o qual as ondas continuamente quebram, mas que permanece firme.",
+    category: "Consolo",
+    emoji: "🌊",
+    author: "Marcus Aurelius",
+    work: "Meditações",
+    type: "classic",
+    source: "Livro IV, 49",
+    verified: true
 },
 
 {
-text:"Às vezes, dizer 'me desculpa' é difícil. Mas reconhecer o erro é uma forma de respeito.",
-category:"Desculpas",
-emoji:"🌷"
+    id: "CON-004",
+    text: "O que estás a sentir agora não precisa ser o lugar onde vais ficar para sempre.",
+    category: "Consolo",
+    emoji: "🌱",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Você não precisa enfrentar tudo sozinho. Permita-se respirar e descansar.",
-category:"Consolo",
-emoji:"🌧️"
+    id: "CON-005",
+    text: "Não precisas encontrar sentido em tudo o que aconteceu para continuar a viver depois disso.",
+    category: "Consolo",
+    emoji: "🤍",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Nem toda dor precisa de uma solução imediata. Às vezes, precisamos apenas de alguém por perto.",
-category:"Consolo",
-emoji:"🫂"
+    id: "CON-006",
+    text: "Às vezes, continuar não parece coragem. Parece apenas respirar e esperar o próximo dia. E isso também é continuar.",
+    category: "Consolo",
+    emoji: "🌙",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Dias difíceis passam. Por enquanto, apenas dê um passo de cada vez.",
-category:"Consolo",
-emoji:"🌙"
+    id: "CON-007",
+    text: "Nem o futuro nem o passado te afligem, mas apenas o presente.",
+    category: "Consolo",
+    emoji: "🌿",
+    author: "Marcus Aurelius",
+    work: "Meditações",
+    type: "classic",
+    source: "Livro VIII, 36",
+    verified: true
 },
 
 {
-text:"Obrigado por fazer parte da minha vida, mesmo nas pequenas coisas.",
-category:"Gratidão",
-emoji:"✨"
+    id: "CON-008",
+    text: "Não tenhas pressa para transformar uma ferida numa lição. Primeiro deixa-a cicatrizar.",
+    category: "Consolo",
+    emoji: "🤍",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Algumas pessoas merecem ser lembradas simplesmente porque tornam nossos dias melhores.",
-category:"Gratidão",
-emoji:"🤍"
+    id: "CON-009",
+    text: "Há ausências que continuam presentes de outras maneiras.",
+    category: "Consolo",
+    emoji: "🌙",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Obrigado por estar presente quando eu mais precisei.",
-category:"Gratidão",
-emoji:"🫶"
+    id: "CON-010",
+    text: "Talvez hoje não consigas ver o caminho. Isso não significa que o caminho acabou.",
+    category: "Consolo",
+    emoji: "🌱",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"A saudade é uma forma silenciosa de lembrar o quanto alguém significa para nós.",
-category:"Saudade",
-emoji:"🌙"
+    id: "CON-011",
+    text: "Se hoje só conseguiste chegar até aqui, então é daqui que continuamos amanhã.",
+    category: "Consolo",
+    emoji: "🤍",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 },
 
 {
-text:"Mesmo longe, algumas pessoas continuam ocupando um lugar especial dentro de nós.",
-category:"Saudade",
-emoji:"🤍"
+    id: "CON-012",
+    text: "A tua mente pode sempre retirar-se para dentro de si mesma.",
+    category: "Consolo",
+    emoji: "🌿",
+    author: "Marcus Aurelius",
+    work: "Meditações",
+    type: "classic",
+    source: "Livro IV, 3",
+    verified: true
 },
 
 {
-text:"Há pessoas que fazem falta até nos momentos mais simples.",
-category:"Saudade",
-emoji:"💭"
+    id: "CON-013",
+    text: "Não precisas ser forte o tempo todo para continuares a ser forte.",
+    category: "Consolo",
+    emoji: "🤍",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
+},
+
+{
+    id: "CON-014",
+    text: "Alguns dias são apenas dias para atravessar. Não precisam de ser vencidos.",
+    category: "Consolo",
+    emoji: "🌙",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
+},
+
+{
+    id: "CON-015",
+    text: "Amanhã não precisa resolver tudo. Basta chegar.",
+    category: "Consolo",
+    emoji: "🌅",
+    author: "Uma Pequena Surpresa",
+    work: null,
+    type: "original",
+    source: null,
+    verified: true
 }
+
 ];
 
 
+function getPhraseMetadata(phrase){
+
+    if(!phrase){
+        return null;
+    }
+
+    return {
+        id: phrase.id || "",
+        author: phrase.author || "",
+        work: phrase.work || "",
+        type: phrase.type || "",
+        source: phrase.source || "",
+        verified: phrase.verified === true
+    };
+}
+  
+  
 let lastIndex = -1;
   
 let selectedCategory = "";
@@ -1985,9 +2287,23 @@ function loadGiftFromLink(){
 const urlPhrase =
     params.get("phrase");
 
+const urlPhraseId =
+    params.get("id");
+  
 const urlEmoji =
     params.get("emoji");
   
+const urlAuthor =
+    params.get("author");
+
+const urlWork =
+    params.get("work");
+
+const urlType =
+    params.get("type");
+
+const urlSource =
+    params.get("source");
   
     if(!urlReceiver){
 
@@ -2039,11 +2355,43 @@ document
 
 if(urlPhrase){
 
+const phraseFromLibrary =
+    phrases.find(function(item){
+
+        return item.id === urlPhraseId;
+
+    });
+
+
+if(phraseFromLibrary){
+
+    selectedPhrase =
+        getPhraseMetadata(phraseFromLibrary);
+
+    selectedPhrase.text =
+        phraseFromLibrary.text;
+
+    selectedPhrase.emoji =
+        phraseFromLibrary.emoji;
+
+    selectedPhrase.category =
+        phraseFromLibrary.category;
+
+}
+else{
+
     selectedPhrase = {
         text: urlPhrase,
         emoji: urlEmoji || "",
-        category: selectedCategory
+        category: selectedCategory,
+        author: urlAuthor || "",
+        work: urlWork || "",
+        type: urlType || "",
+        source: urlSource || "",
+        verified: false
     };
+
+  }
 
       }
 
@@ -2159,28 +2507,47 @@ if(!sender){
 }
 
 
+/* =========================
+   SORTEIO EDITORIAL
+   Apenas frases verificadas
+========================= */
+
+selectedPhrase = null;
+
 const filteredPhrases =
     phrases.filter(function(item){
 
-        return item.category ===
-            selectedCategory;
+        return (
+            item.category === selectedCategory &&
+            item.verified === true
+        );
 
     });
 
 
-if(filteredPhrases.length > 0){
+if(filteredPhrases.length === 0){
 
-    selectedPhrase =
-        filteredPhrases[
-            Math.floor(
-                Math.random() *
-                filteredPhrases.length
-            )
-        ];
+    showFormMessage(
+        "Ainda estamos a preparar esta surpresa."
+    );
 
-  }
+    return;
+}
 
 
+selectedPhrase =
+    filteredPhrases[
+        Math.floor(
+            Math.random() *
+            filteredPhrases.length
+        )
+    ];
+
+    
+const phraseMetadata =
+    getPhraseMetadata(selectedPhrase);
+
+    
 const baseUrl =
     "https://lianaz-gift.github.io/uma-pequena-surpresa/";
 
@@ -2194,10 +2561,20 @@ giftLink =
     encodeURIComponent(selectedCategory) +
     "&message=" +
     encodeURIComponent(personalMessage) +
-    "&phrase=" +
-    encodeURIComponent(selectedPhrase.text) +
-    "&emoji=" +
-    encodeURIComponent(selectedPhrase.emoji);
+"&id=" +
+encodeURIComponent(phraseMetadata.id) +
+  "&phrase=" +
+encodeURIComponent(selectedPhrase.text) +
+"&emoji=" +
+encodeURIComponent(selectedPhrase.emoji) +
+"&author=" +
+encodeURIComponent(phraseMetadata.author) +
+"&work=" +
+encodeURIComponent(phraseMetadata.work) +
+"&type=" +
+encodeURIComponent(phraseMetadata.type) +
+"&source=" +
+encodeURIComponent(phraseMetadata.source);
   
   
 document
@@ -2395,120 +2772,12 @@ function showPhrase(){
 
     }
   
-    let available = phrases;
 
-
-    /* Se uma categoria foi escolhida,
-       procurar apenas frases dessa categoria */
-
-    if(selectedCategory){
-
-        const filtered =
-            phrases.filter(function(item){
-
-                return item.category ===
-                    selectedCategory;
-
-            });
-
-      
-if(filtered.length > 0){
-
-    available = filtered;
-
-}
-else{
-
+    /* Nenhuma frase definida.
+       Não sortear outra automaticamente. */
     return;
-
-      }
-      
-    }
-
-
-    let index;
-
-
-    let item;
-
-
-    do{
-
-        index =
-            Math.floor(
-                Math.random() *
-                available.length
-            );
-
-
-        item =
-            available[index];
-
-    }
-
-    while(
-        available.length > 1 &&
-        index === lastIndex
-    );
-
-
-    lastIndex = index;
-
-
-    document
-        .getElementById("phrase")
-        .textContent =
-        '"' + item.text + '"';
-
-
-    document
-        .getElementById("category")
-        .textContent =
-        item.category;
-
-
-    document
-        .getElementById("emoji")
-        .textContent =
-        item.emoji;
-
-  document
-    .getElementById("receiverResult")
-    .textContent =
-    receiver;
-
-
-document
-    .getElementById("senderResult")
-    .textContent =
-    "De: " + sender;
-
-
-const personal =
-    document.getElementById("personalResult");
-
-
-if(personalMessage){
-
-    personal.textContent =
-        personalMessage;
-
-    personal.style.display =
-        "block";
-
 }
-else{
-
-    personal.textContent =
-        "";
-
-    personal.style.display =
-        "none";
-
-}
-  
-}
-
+    
 
 /* =========================
    NOVA SURPRESA
