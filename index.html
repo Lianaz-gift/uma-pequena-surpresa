@@ -868,97 +868,122 @@ body{
    CARTÃO
 ========================= */
 
-.card{
+/* =========================
+   CARTÃO — MINIMALISTA ELEGANTE
+========================= */
+
+.card-area{
 
     position:fixed;
 
-    left:50%;
-    top:50%;
+    inset:0;
 
-    transform:
-        translate(-50%,-50%)
-        scale(.8);
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    pointer-events:none;
+  }
+  
+    .card{
+    
+   transform:scale(.8);
 
     width:88%;
-
     max-width:390px;
+    min-height:560px;
 
-    padding:38px 25px;
+    padding:58px 34px 42px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
     text-align:center;
 
     background:
-        rgba(20,20,20,.96);
+        linear-gradient(
+            145deg,
+            #171615 0%,
+            #0f0e0d 100%
+        );
 
-    border:
-        1px solid
-        rgba(216,184,106,.45);
+    color:#f3efe5;
 
-    border-radius:20px;
+    border:2px solid
+        rgba(184,150,75,.35);
+
+    border-radius:2px;
 
     box-shadow:
-        0 35px 90px rgba(0,0,0,.8);
+        0 30px 80px rgba(0,0,0,.65);
 
     opacity:0;
-
     visibility:hidden;
 
     transition:
-        opacity .8s ease,
-        transform .8s cubic-bezier(.2,.8,.2,1);
-}
+        opacity .9s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1);
+  }
 
 .card.show{
-
     opacity:1;
-
     visibility:visible;
 
-    transform:
-        translate(-50%,-50%)
-        scale(1);
+  transform:scale(1);
+
 }
 
-.card-icon{
-
-    font-size:36px;
-
-    margin-bottom:20px;
-}
-
-.phrase{
-
-    font-size:21px;
-
-    line-height:1.6;
-
-    font-style:italic;
-}
-
-.category{
-
-    margin-top:23px;
-
-    color:#d8b86a;
-
-    font-family:Arial,sans-serif;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-}
 
 /* =========================
-   PERSONALIZAÇÃO DO CARTÃO
+   DETALHE SUPERIOR
+========================= */
+
+.card::before{
+    content:"";
+    position:absolute;
+
+    top:32px;
+    left:50%;
+
+    width:42px;
+    height:1px;
+
+    background:#b99755;
+
+    transform:translateX(-50%);
+
+    opacity:.7;
+}
+
+.card::after{
+    content:"✦";
+
+    position:absolute;
+
+    top:23px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:#b99755;
+
+    font-family:Georgia,serif;
+    font-size:11px;
+}
+
+
+/* =========================
+   DESTINATÁRIO
 ========================= */
 
 .recipient{
-
-    margin-bottom:20px;
-
-    color:#777;
+    color:#9c9588;
 
     font-family:Arial,sans-serif;
 
@@ -967,48 +992,143 @@ body{
     letter-spacing:3px;
 
     text-transform:uppercase;
-}
+
+    margin-bottom:22px;
+  }
 
 .recipient span{
+    color:#f3efe5;
 
-    color:#d8b86a;
+    font-weight:500;
 
-    margin-left:5px;
+    margin-left:4px;
+  }
 
-    letter-spacing:1px;
+
+/* =========================
+   ÍCONE
+========================= */
+
+.card-icon{
+    margin-bottom:27px;
+
+    font-size:20px;
+
+    filter:
+        grayscale(.2);
+
+    opacity:.9;
 }
 
-.personal-message{
 
-    margin-top:22px;
+/* =========================
+   FRASE
+========================= */
+
+.phrase{
+    color:#f3efe5;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:19px;
+
+    line-height:1.45;
+
+    font-weight:400;
+
+    margin:0 0 18px;
+
+    max-width:310px;
+  }
+
+
+/* =========================
+   CATEGORIA
+========================= */
+
+.category{
+    color:#c2a15a;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:24px;
+  }
+
+
+/* =========================
+   MENSAGEM PESSOAL
+========================= */
+
+.personal-message{
+    color:#aaa296;
+
+    font-family:Arial,sans-serif;
+
+    font-size:12px;
+
+    line-height:1.7;
+
+    max-width:290px;
 
     padding-top:20px;
 
     border-top:
         1px solid
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.10);
 
-    color:#ccc;
+    margin-bottom:22px;
+  }
 
-    font-family:Arial,sans-serif;
-
-    font-size:13px;
-
-    line-height:1.6;
+.personal-message.show{
+    display:block;
 }
 
+
+/* =========================
+   REMETENTE
+========================= */
+
 .sender{
-
-    margin-top:20px;
-
-    color:#666;
+    color:#9c9588;
 
     font-family:Arial,sans-serif;
 
     font-size:10px;
 
     letter-spacing:1px;
+
+    margin-bottom:8px;
   }
+
+
+/* =========================
+   ASSINATURA
+========================= */
+
+.signature{
+    color:#847d71;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+    margin-top:4px;
+  }
+
 
 /* =========================
    MENSAGEM DO FORMULÁRIO
@@ -1045,28 +1165,36 @@ body{
 
 .new-surprise{
 
-    margin-top:30px;
+    margin-top:20px;
 
-    border:1px solid #d8b86a;
+    border:
+        1px solid
+        rgba(216,184,106,.55);
 
     background:transparent;
 
     color:#d8b86a;
 
-    padding:12px 24px;
+    padding:10px 20px;
 
-    border-radius:25px;
+    border-radius:2px;
 
     font-family:Arial,sans-serif;
 
-    font-size:10px;
+    font-size:8px;
 
     letter-spacing:2px;
 
     cursor:pointer;
 
     transition:.3s;
-}
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+  }
 
 .new-surprise:hover{
 
@@ -1075,17 +1203,16 @@ body{
     color:#111;
 }
 
-.signature{
+.card.show + .new-surprise{
 
-    margin-top:23px;
+    opacity:1;
 
-    color:#555;
+    visibility:visible;
 
-    font-family:Arial,sans-serif;
+    pointer-events:auto;
+  }
 
-    font-size:9px;
-}
-
+  
 /* =========================
    RESPONSIVO
 ========================= */
@@ -1415,68 +1542,62 @@ body{
 
 </section>
   
-  
+
 <!-- =========================
      CARTÃO
 ========================= -->
 
-<div
-    class="card"
-    id="card">
+<div class="card-area">
 
-<div class="recipient">
+    <div
+        class="card"
+        id="card">
 
-    PARA <span id="receiverResult"></span>
+    <div class="recipient">
+        PARA
+        <span id="receiverResult"></span>
+    </div>
 
-</div>
-  
     <div
         class="card-icon"
         id="emoji">
-        ❤️
+        ✦
     </div>
-
 
     <div
         class="phrase"
         id="phrase">
     </div>
 
-
     <div
         class="category"
         id="category">
     </div>
 
-<div
-    class="personal-message"
-    id="personalResult">
-</div>
-
-<div
-    class="sender"
-    id="senderResult">
-</div>
-  
-
-    <button
-        class="new-surprise"
-        onclick="newSurprise()">
-
-        ✦ NOVA SURPRESA
-
-    </button>
-
-
-    <div class="signature">
-
-        Uma pequena mensagem pode
-        mudar um grande dia.
-
+    <div
+        class="personal-message"
+        id="personalResult">
     </div>
 
+    <div
+        class="sender"
+        id="senderResult">
+    </div>
+
+<div class="signature">
+    Uma pequena surpresa
 </div>
 
+</div>
+
+<button
+    type="button"
+    class="new-surprise"
+    onclick="newSurprise()">
+    ABRIR NOVAMENTE
+</button>
+
+</div>
 
 <script>
 
